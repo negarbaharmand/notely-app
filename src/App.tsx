@@ -3,6 +3,7 @@ import './App.css'
 import { type Note } from './types'
 import { loadNotes, saveNotes } from './storage';
 import NoteInput from './components/NoteInput';
+import NoteList from './components/NoteList';
 
 function App() {
   const [notes, setNotes] = useState<Note[]>(() => loadNotes());
@@ -58,8 +59,16 @@ function App() {
   return (
     <div className="app-container">
       <h1>Notely</h1>
-
       <NoteInput onAddNote={handleAddNote} />
+      <NoteList
+        notes={notes}
+        editingId={editingId}
+        onStartEdit={handleStartEdit}
+        onSaveEdit={handleSaveEdit}
+        onCancelEdit={handleCancelEdit}
+        onToggleStatus={handleToggleStatus}
+        onDelete={handleDelete}
+      />
     </div>
   )
 }
