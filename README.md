@@ -41,3 +41,7 @@ Notely is a single `App` component with child components (`NoteInput`, `NoteList
 - Filter by status (pending/approved/all)
 - Search functionality
 - Note categories/tags
+
+## 🔗 Live Demo
+
+**[Try it here](https://notely-sand.vercel.app/)**
