@@ -64,7 +64,7 @@ function App() {
   });
 
   return (
-    <div className="app-container">
+    <main className="app-container">
       <h1>Notely</h1>
       <NoteInput onAddNote={handleAddNote} />
       <div className="filter-section">
@@ -98,7 +98,7 @@ function App() {
         onDelete={handleDelete}
       />
 
-    </div>
+    </main>
   )
 }
 

@@ -34,9 +34,9 @@
 }
 
 .filter-btn.active {
-  background-color: #4caf50;
+  background-color: #2e7d32;
   color: #fff;
-  border-color: #4caf50;
+  border-color: #2e7d32;
 }
 
 .textarea {
@@ -53,7 +53,7 @@
 .textarea-edit {
   width: 100%;
   padding: 8px;
-  border: 2px solid #4caf50;
+  border: 2px solid #2e7d32;
   border-radius: 4px;
   box-sizing: border-box;
   font-family: inherit;
@@ -78,7 +78,7 @@
 
 /* Empty State */
 .empty-state {
-  color: #999;
+  color: #757575;
   font-style: italic;
 }
 
@@ -140,14 +140,14 @@
 }
 
 .btn-primary {
-  background-color: #4caf50;
+  background-color: #2e7d32;
   color: #fff;
-  border-color: #4caf50;
+  border-color: #2e7d32;
 }
 
 .btn-primary:hover {
-  background-color: #45a049;
-  border-color: #45a049;
+  background-color: #1b5e20;
+  border-color: #1b5e20;
 }
 
 .btn-danger {
