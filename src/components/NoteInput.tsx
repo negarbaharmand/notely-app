@@ -45,6 +45,7 @@ function NoteInput({ onAddNote }: NoteInputProps) {
         placeholder="Enter your note..."
         rows={3}
         className="textarea"
+        aria-label="New note"
       />
       <div className="input-actions">
         <button onClick={handleAddNote} className="btn btn-primary">

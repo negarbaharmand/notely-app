@@ -21,7 +21,7 @@ function NoteList({
   onDelete,
 }: NoteListProps) {
   if (notes.length === 0) {
-    return <p className="empty-state">No notes yet. Add your first note above!</p>;
+    return <p className="empty-state">No notes yet. Add your first note using the note input.</p>;
   }
 
   return (

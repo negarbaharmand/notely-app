@@ -72,6 +72,7 @@ function NoteCard({
             onKeyDown={handleKeyDown}
             rows={3}
             className="textarea-edit"
+            aria-label="Edit note content"
             autoFocus
           />
           <div className="edit-helper-text">

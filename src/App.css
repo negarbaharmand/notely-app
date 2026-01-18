@@ -37,6 +37,7 @@
   background-color: #2e7d32;
   color: #fff;
   border-color: #2e7d32;
+  font-weight: 700;
 }
 
 .textarea {
@@ -177,4 +178,17 @@
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Focus visible for keyboard users; supports high-contrast */
+button:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #2e7d32;
+  outline-offset: 2px;
+}
+@media (forced-colors: active) {
+  button:focus-visible,
+  textarea:focus-visible {
+    outline: 2px solid;
+  }
 }

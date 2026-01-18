@@ -15,6 +15,6 @@ const defaultProps = {
 describe('NoteList', () => {
   it('shows empty state when no notes', () => {
     render(<NoteList {...defaultProps} notes={[]} />)
-    expect(screen.getByText(/no notes yet. add your first note above!/i)).toBeInTheDocument()
+    expect(screen.getByText(/no notes yet. add your first note using the note input\./i)).toBeInTheDocument()
   })
 })
