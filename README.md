@@ -17,8 +17,14 @@ Open `http://localhost:5173` in your browser.
 Lighthouse scores before and after optimizations:
 
 ![Performance improvement](docs/lighthouse.png)
-
 Performance and Accessibility both improved to 100; Best Practices and SEO were already strong and stayed the same.
+
+## Accessibility Report
+
+IBM accessibility scan results before and after improvements, showing identified vulnerabilities and their resolution:
+
+![A11Y improvement](docs/a11y.png)
+
 
 ## Design Notes
 
@@ -41,6 +47,12 @@ Notely is a single `App` component with child components (`NoteInput`, `NoteList
 - Filter by status (pending/approved/all)
 - Search functionality
 - Note categories/tags
+
+## Known Vulnerabilities
+
+Below is the list of known vulnerabilities that need to be fixed in the next steps.
+
+- XSS possible via markdown: The `marked` library output is NOT sanitized before rendering with `dangerouslySetInnerHTML`. Upon inital look, adding [DOMPurify](https://github.com/cure53/DOMPurify) to sanitize HTML output would be a practical resolution.
 
 ## 🔗 Live Demo
 
