@@ -1,4 +1,5 @@
-import { useState, type KeyboardEvent } from "react";
+import { useState, useMemo, type KeyboardEvent } from "react";
+import { marked } from "marked";
 import { VALIDATION, type Note } from "../types";
 
 interface NoteCardProps {
@@ -21,6 +22,10 @@ function NoteCard({
   onDelete,
 }: NoteCardProps) {
   const [editValue, setEditValue] = useState(note.content);
+
+  const parsedMarkdown = useMemo(() => {
+    return marked.parse(note.content) as string;
+  }, [note.content]);
 
   const handleSaveEdit = () => {
     const trimmed = editValue.trim();
@@ -82,12 +87,11 @@ function NoteCard({
         </div>
       ) : (
         <div
-          className="note-content"
+          className="note-content markdown-content"
           onClick={handleStartEdit}
           title="Click to edit"
-        >
-          {note.content}
-        </div>
+          dangerouslySetInnerHTML={{ __html: parsedMarkdown }}
+        />
       )}
       <div className="button-actions">
         {isEditing ? (

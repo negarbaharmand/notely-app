@@ -31,8 +31,9 @@ Notely is a single `App` component with child components (`NoteInput`, `NoteList
 - Separate CSS file for maintainability
 - Real-time validation with character counter
 - Filtering by status (all/pending/approved)
+- Markdown support for rich text formatting in notes
 
-**Tech Stack:** React 18, TypeScript, Vite, localStorage
+**Tech Stack:** React 18, TypeScript, Vite, localStorage, marked (markdown parser)
 
 ### Things to implement for the future:
 
