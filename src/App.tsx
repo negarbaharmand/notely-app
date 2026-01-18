@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import { type Note } from './types'
+import { type Note, type NoteStatus } from './types'
 import { loadNotes, saveNotes } from './storage';
 import NoteInput from './components/NoteInput';
 import NoteList from './components/NoteList';
@@ -8,6 +8,7 @@ import NoteList from './components/NoteList';
 function App() {
   const [notes, setNotes] = useState<Note[]>(() => loadNotes());
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [filter, setFilter] = useState<NoteStatus | null>(null);
 
 
   // save notes when they change
@@ -56,12 +57,39 @@ function App() {
     setEditingId(null);
   };
 
+  // Filter notes based on selected status
+  const filteredNotes = notes.filter((note) => {
+    if (filter === null) return true; // null means show all
+    return note.status === filter;
+  });
+
   return (
     <div className="app-container">
       <h1>Notely</h1>
       <NoteInput onAddNote={handleAddNote} />
+      <div className="filter-section">
+        <button
+          onClick={() => setFilter(null)}
+          className={`filter-btn ${filter === null ? "active" : ""}`}
+        >
+          All
+        </button>
+        <button
+          onClick={() => setFilter("pending")}
+          className={`filter-btn ${filter === "pending" ? "active" : ""}`}
+        >
+          Pending
+        </button>
+        <button
+          onClick={() => setFilter("approved")}
+          className={`filter-btn ${filter === "approved" ? "active" : ""}`}
+        >
+          Approved
+        </button>
+      </div>
+
       <NoteList
-        notes={notes}
+        notes={filteredNotes}
         editingId={editingId}
         onStartEdit={handleStartEdit}
         onSaveEdit={handleSaveEdit}
@@ -69,6 +97,7 @@ function App() {
         onToggleStatus={handleToggleStatus}
         onDelete={handleDelete}
       />
+
     </div>
   )
 }
