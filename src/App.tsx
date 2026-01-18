@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './App.css'
 import { type Note, type NoteStatus } from './types'
 import { loadNotes, saveNotes } from './storage';
@@ -9,10 +9,14 @@ function App() {
   const [notes, setNotes] = useState<Note[]>(() => loadNotes());
   const [editingId, setEditingId] = useState<string | null>(null);
   const [filter, setFilter] = useState<NoteStatus | null>(null);
+  const skipNextSave = useRef(true);
 
-
-  // save notes when they change
+  // save when notes change; skip first run (redundant with initial load)
   useEffect(() => {
+    if (skipNextSave.current) {
+      skipNextSave.current = false;
+      return;
+    }
     saveNotes(notes);
   }, [notes]);
 
@@ -25,6 +29,7 @@ function App() {
     }
     setNotes([newNote, ...notes]);
   }
+
   const handleDelete = (id: string) => {
     setNotes(notes.filter((note) => note.id !== id));
   }
@@ -66,6 +71,7 @@ function App() {
   return (
     <main className="app-container">
       <h1>Notely</h1>
+
       <NoteInput onAddNote={handleAddNote} />
       <div className="filter-section">
         <button
@@ -97,7 +103,6 @@ function App() {
         onToggleStatus={handleToggleStatus}
         onDelete={handleDelete}
       />
-
     </main>
   )
 }
